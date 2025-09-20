@@ -1,0 +1,13 @@
+Генерация mock методов с помощью пакета mockery
+- go get github.com/vektra/mockery/v2@latest. Скачалась версия vv2.53.5
+- к описанию интерфейса добавляем директиву //go:generate
+
+//go:generate go run github.com/vektra/mockery/v2@v2.53.5 --name=URLSaver
+type URLSaver interface {
+	SaveURL(URL, alias string) (int64, error)
+}
+
+# --name=URLSaver имя интерфейса, для которого будет сгенерирован mock
+
+- сверху над директивой появится ссылка run go generate, нажимаем. 
+- в папке где лежит Go файл с описанием интерфейса, появиться новая папка mocks, в которой будет лежать сгенерированный код для mock
